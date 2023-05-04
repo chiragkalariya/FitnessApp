@@ -6,17 +6,17 @@ const ExerciseVideo = ({ exerciseVideos, name }) => {
     if(!exerciseVideos || !exerciseVideos.length) return <Loader />
     // console.log(exerciseVideos);
     return (
-        <Box sx={{ marginTop: { lg: '200px', xs: '20px' } }} p="20px">
+        <Box sx={{ mt: { lg: '100px', xs: '0px' } }} p="20px">
             <Typography variant='h4' mb='33px'>
                 Watch <span style={{color: '#ff2625', textTransform: 'capitalize'}}>{name}</span> exercise videos
             </Typography>
             <Stack justifyContent="flex-start" flexWrap="wrap" alignItems="center" 
                 sx={{
                     flexDirection: {lg: 'row'},
-                    gap: {lg: '110px', xs: '0'}
+                    gap: {lg: '110px', xs: '0px'}
                 }}>
                     {
-                        exerciseVideos?.toString().slice(0, 3)?.map((item, index) => (
+                        exerciseVideos?.slice(0, 6)?.map((item, index) => (
                             <a 
                                 key={index}
                                 className='exercise-video'
@@ -24,7 +24,15 @@ const ExerciseVideo = ({ exerciseVideos, name }) => {
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                <img src={item.video.thumbnails[0].url} alt={item.video.title} />
+                                <img style={{borderTopLeftRadius: '20px'}} src={item.video.thumbnails[0].url} alt={item.video.title} />
+                                <Box>
+                                    <Typography sx={{fontSize: {lg: '28px', sx: '18px'}}} fontWeight={600} color="#000">
+                                        {item.video.title}
+                                    </Typography>
+                                    <Typography fontSize="14px" color="#000">
+                                        {item.video.channelName}
+                                    </Typography>
+                                </Box>
                             </a>
                         ))
                     }

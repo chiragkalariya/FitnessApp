@@ -9,8 +9,8 @@ import { useParams } from 'react-router-dom'
 const ExerciseDetail = () => {
     const [exerciseDetail, setExerciseDetail] = useState({});
     const [exerciseVideos, setExerciseVideos] = useState([]);
-    const [targetMuscleExercises, setTargetMuscleExercises] = useState();
-    const [equipmentExercises, setEquipmentExercises] = useState();
+    const [targetMuscleExercises, setTargetMuscleExercises] = useState([]);
+    const [equipmentExercises, setEquipmentExercises] = useState([]);
 
     const {id} = useParams();
     useEffect(() => {
@@ -30,14 +30,15 @@ const ExerciseDetail = () => {
             setEquipmentExercises(equipmentExerciseData);
         }
 
-        fetchExerciseData()
+        fetchExerciseData(targetMuscleExercises)
     }, [id])
-    console.log(exerciseVideos);
+    console.log(targetMuscleExercises);
+    if (!exerciseDetail) return <div>No Data</div>;
     return (
         <Box>
-            <Detail exerciseDetail={exerciseDetail} />
+            <Detail exerciseDetail={exerciseDetail} detailkey="detail" />
             <ExerciseVideo exerciseVideos={exerciseVideos} name={exerciseDetail.name} />
-            <SimilarExercises targetMuscleExercises={targetMuscleExercises} equipmentExercises={equipmentExercises} />
+            <SimilarExercises targetMuscleExercises={targetMuscleExercises} equipmentExercises={equipmentExercises} /> 
         </Box>
     )
 }

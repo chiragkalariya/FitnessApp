@@ -3,25 +3,24 @@ import React from 'react'
 import HorizontalScrollbar from './HorizontalScrollbar'
 import Loader from './Loader'
 
-const SimilarExercises = ({targetMuscleExercises, equipmentExercises}) => {
+const SimilarExercises = ({ targetMuscleExercises, equipmentExercises }) => {
+    // const {bodyPart, equipment, gifUrl, id, name, target} = targetMuscleExercises;
+    console.log(targetMuscleExercises);
     return (
-        <Box sx={{mt: {lg: '100px', xs: '0'}}}>
+        <Box sx={{ mt: { lg: '100px', xs: '0px' } }}>
             <Typography variant="h3" mb={5}>
                 Exercise that target the same muscle group
             </Typography>
-            <Stack direction="row" sx={{p: '2', position: 'relative'}}>
-                {
-                    targetMuscleExercises || targetMuscleExercises.length ? <HorizontalScrollbar data={targetMuscleExercises} /> : <Loader />
-                }
+            <Stack direction="row" sx={{ p: 2, position: 'relative' }}>
+                {targetMuscleExercises.length !== 0 ? <HorizontalScrollbar data={targetMuscleExercises} /> : <Loader />}
+                
             </Stack>
 
             <Typography variant="h3" mb={5}>
                 Exercise that target the same equipment group
             </Typography>
-            <Stack direction="row" sx={{p: '2', position: 'relative'}}>
-                {
-                    equipmentExercises || equipmentExercises.length ? <HorizontalScrollbar data={equipmentExercises} /> : <Loader />
-                }
+            <Stack direction="row" sx={{p: 2, position: 'relative'}}>
+                {equipmentExercises.length !== 0 ? <HorizontalScrollbar data={equipmentExercises} /> : <Loader />}
             </Stack>
         </Box>
     )
