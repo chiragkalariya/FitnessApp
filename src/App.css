@@ -87,6 +87,11 @@ body {
   transition: 0.3s all ease-in-out;
 }
 
+.detail-image {
+  width: 100%;
+  min-width: 260px;
+}
+
 .exercise-card:hover,
 .bodyPart-card:hover {
   transform: scale(1.1, 1.1);

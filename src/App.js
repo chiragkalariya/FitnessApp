@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import ExerciseDetail from './pages/ExerciseDetail';
 import Footer from './component/Footer';
 
+
 function App() {
   return (
     <>
